@@ -45,11 +45,24 @@ with open (budget_csv) as csv_file:
             
 # print on terminal
 def terminal_print():
-    print("Financial Analysis")
+    print("Financial Analysis\n")
     print("--------------------------")
     print(f"Total Months: {total_months}")
     print(f"Total: ${total_amount}")
     print(f"Average Change: ${average_change}")
     print(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})")
     print(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
-terminal_print()  
+terminal_print()
+
+
+def write_analysis():    
+    budget_analysis = os.path.join(".", "analysis", "analysis.txt")        
+    with open (budget_analysis, "w") as txt_file:  
+        txt_file.write("Financial Analysis\n")
+        txt_file.write("--------------------------\n")
+        txt_file.write(f"Total Months: {total_months}\n")
+        txt_file.write(f"Total: ${total_amount}\n")
+        txt_file.write(f"Average Change: ${average_change}\n")
+        txt_file.write(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})\n")
+        txt_file.write(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})\n")
+write_analysis()
