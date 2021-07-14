@@ -1,4 +1,3 @@
-
 import os
 import csv
 from collections import Counter
@@ -7,9 +6,13 @@ poll_csv = os.path.join(".", "Resources", "election_data.csv")
 total_votes = 0
 candidates = None
 total_candidates = []
-total_results = []
 total_count = []
 winner = ""
+dash_line = "--------------------"
+total_results = ["Election Results ",
+                 dash_line,
+                 f"Total Votes: {total_votes}",
+                 dash_line]
 with open (poll_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter = ",")
     csv_header = next(csv_file)
@@ -26,6 +29,15 @@ with open (poll_csv) as csv_file:
             
         result = f"{names}: {percent:.3f}% ({values})"
         total_results.append(result)
-     
+total_results.append(dash_line)
+total_results.append(f"Winner: {winner}")        
+total_results.append(dash_line)  
+
+def terminal_print():
+    for line in total_results:
+        print(line)
+
+terminal_print()
+    
 
 
