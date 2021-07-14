@@ -39,5 +39,9 @@ def terminal_print():
 
 terminal_print()
     
-
-
+def write_analysis():    
+    poll_analysis = os.path.join(".", "analysis", "analysis.txt")        
+    with open (poll_analysis, "w") as txt_file:
+        for line in total_results:
+            txt_file.write(line + "\n")
+write_analysis()   
